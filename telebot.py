@@ -1,16 +1,18 @@
 import os
+import logging
+
+import telegram
+
 from pymongo import MongoClient
 from telegram.ext import Updater, CommandHandler
 from telegram.ext import MessageHandler, Filters
-import telegram
 from google.cloud import speech
-import logging
+from db import url, adminlist
+
 logging.basicConfig(filename='bot.log',level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-adminlist = [341971613]
 
-url='mongodb://root:Chang0226@ds015878.mlab.com:15878/telebot'
 client = MongoClient(url)
 db = client['telebot']
 user_collect = db['user']
